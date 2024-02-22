@@ -1,5 +1,8 @@
 const userModel = require("../models/userSchema");
 const twilio = require("../otpVerification/twilio");
+const bcrypt = require('bcrypt');
+
+
 
 const object = {
   postSignup: async (req, res) => {
@@ -9,10 +12,11 @@ const object = {
     if (existingUser) {
       res.status(400).json({ error: "user already exist.please login" });
     } else {
+      const hashedPassword =  await bcrypt.hash(password,10)
       const user = new userModel({
         username: username,
         email: email,
-        password: password,
+        password: hashedPassword,
       });
       await user.save();
       res.status(200).json({ message: "user logged" });
