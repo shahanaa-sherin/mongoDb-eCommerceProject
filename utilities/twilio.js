@@ -15,6 +15,6 @@ const otpgenerate = async function (phone) {
     console.log(error);
     throw error
   }
- 
 };
+
 module.exports = otpgenerate;
