@@ -9,10 +9,22 @@ const schema = mongoose.Schema({
     type: String,
     required: true,
   },
+  phonenumber:{
+    type:Number,
+    required:true
+  
+   },
   password: {
     type: String,
     required: true,
   },
+  role:{
+    type:String,
+    default:"user",
+    required:true,
+
+  }
+
 });
 
 const userModel = mongoose.model("Userdata", schema);

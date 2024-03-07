@@ -7,8 +7,8 @@ const commonRouter = require("./Routes/userRoutes");
 
 const port = 4000;
 mongoose();
-
 dotenv.config
+
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
