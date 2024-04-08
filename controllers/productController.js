@@ -26,6 +26,25 @@ const object = {
       res.status(500).json({ message: error.message });
     }
   },
- 
+  updateProduct: async (req, res) => {
+    try {
+      const productId = req.params.id;
+      const updateData = req.body;
+      console.log(productId, updateData, 'here')
+      const updatedProduct = await product.findByIdAndUpdate(
+        productId,
+        updateData
+      );
+      if (!updatedProduct) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      return res
+        .status(200)
+        .json({ message: "Product updated successfully", updatedProduct });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
 }
 module.exports = object;
