@@ -7,5 +7,4 @@ async function config(){
         console.log("database not connected",err);
     })
 }
-
 module.exports = config;

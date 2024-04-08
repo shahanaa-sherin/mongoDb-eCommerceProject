@@ -16,7 +16,6 @@ module.exports = async function twilioVerify(phonenumber, otp) {
         to: `${countryCode}${phonenumber}`,
         code: `${otp}`,
       });
-
     return verificationChecks;
   } catch (error) {
     console.error("Error during otp verification ");

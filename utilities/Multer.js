@@ -23,7 +23,7 @@ const upload = multer({
       cb(null, {filedName: file.filedname});
     },
     key: function(req, file, cb) {
-      cb(null , image-${Date.now()}.img);
+      cb(null , `image-${Date.now()}.img`);
     },
   }),
 });
