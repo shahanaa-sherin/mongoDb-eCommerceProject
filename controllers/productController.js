@@ -45,6 +45,24 @@ const object = {
       console.error(error);
     }
   },
-
+  deleteProduct:async(req,res) =>{
+    try {
+      const productId = req.params.id;
+      const deleteData = req.body;
+      console.log(productId, deleteData, 'here')
+      const deletedProduct = await product.findByIdAndDelete(
+        productId,
+        deleteData
+      );
+      if (!deletedProduct) {
+        return res.status(404).json({ message: "Product not found" });
+      }
+      return res
+        .status(200)
+        .json({ message: "Product deleted successfully", deletedProduct });
+    } catch (error) {
+      console.error(error);
+  }
+}
 }
 module.exports = object;
